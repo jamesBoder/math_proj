@@ -1,4 +1,20 @@
 /* CSS Code */
-.container h1 {
-  color: aqua;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+#myHeading {
+  font-size: 2em;
+  color: #333;
+  text-decoration: underline;
 }
