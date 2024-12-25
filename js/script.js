@@ -2,6 +2,9 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Your code here
   var currentQuestion;
+  var timeLeft = 10;
+  var interval;
+  var score = 0;
 
   // Generate a random number between 1 and 100
   var randomNumberGenerator = function (size) {
@@ -35,21 +38,46 @@ document.addEventListener('DOMContentLoaded', function() {
     if (userInput === answer); {
       renderNewQuestion();
       $('#answer').val('');
+      updateTimeLeft(+1)
+      updateScore(+1);
     }
   }
 
   $('#answer').on('keyup', function(event) {
+    startGame();
     checkAnswer(Number($(this).val()), currentQuestion.answer);
   });
 
+  //Timer 
+  var updateTimeLeft = function () {
+    timeLeft--;
+    $('#time').text(timeLeft);
+  }
+
+  var startGame = function () {
+    if (!interval) {
+
+      if (timeLeft === 0) {
+        updateTimeLeft(10);
+      }
+      interval = setInterval (function() {
+        updateTimeLeft(-1);
+        if (timeLeft === 0) {
+          clearInterval(interval);
+          interval = undefined;
+        }
+      }, 1000);
+    }
+  }
+
+
+  //Score
+  var updateScore = function (amount) {
+    score += amount;
+    $('#score').text(score);
+  };
+  
   renderNewQuestion();
-
-
-
-
-
-
-
 
 
 

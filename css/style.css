@@ -6,11 +6,21 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  background-color: #eb1919;
+  color: #333;
+}
+
 .container {
   display: flex;
-  justify-content: center;
-  background-color: #f1f1f1;
-  padding: 20px;
+  flex-direction: row;
+  
+  background-color: cadetblue;
+  padding: 30px;
+  border: solid 1px #333;
+  border-radius: 5px;
+  border-style: dashed solid;
 }
 
 #myHeading {
@@ -18,3 +28,26 @@
   color: #333;
   text-decoration: underline;
 }
+
+.class .btn {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: solid 1px #333;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.class.btn:hover {
+  background-color: #555;
+}
+
+p {
+  display: inline;
+  font-size: 1.5em;
+  color: #333;
+  
+}
+
+
