@@ -10,41 +10,41 @@
   <script src="js/script.js"></script>
 </head>
 <body>
-  
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <h1 id="myHeading">Math Game</h1>
-        </div>
-        <div class="col-md-6">
-          <div class="score">
-            <p>Score: <span id="score">0</span></p>
-          </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 id="myHeading">Math Game</h2>
+        <img src="images/icons8-math-64.png" alt="Math Game" id="mathImage">
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="game">
-            <div class="question">
-              <p>Question: <span id="question">5 x 5</span></p>
-            </div>
-            <div class="answer">
-              <input type="number" id="answer" placeholder="Enter your answer">
-              <button class="btn" id="submit">Submit</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="timer">
-            <p>Time left: <span id="time">10</span></p>
-          </div>
-          <div class="start">
-            <button class="btn btn-rounded" id="start">Start</button>
-          </div>
+      <div class="col-md-6">
+        <div class="score">
+          <p>Score: <span id="score">0</span></p>
         </div>
       </div>
     </div>
-  
+    <div class="row">
+      <div class="col-md-6">
+        <div class="game">
+          <div class="question">
+            <p>Solve: <span id="question">5 x 5</span></p>
+          </div>
+          <div class="answer">
+            <input type="number" id="answer" placeholder="Enter your answer">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="timer">
+          <p>Time left: <span id="time">10</span></p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="highscore">
+          <p>Highscore: <span id="highscore">0</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
   
 </body>
 </html>

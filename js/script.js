@@ -5,24 +5,66 @@ document.addEventListener('DOMContentLoaded', function() {
   var timeLeft = 10;
   var interval;
   var score = 0;
+  var highScore = 0;
 
-  // Generate a random number between 1 and 100
-  var randomNumberGenerator = function (size) {
-    return Math.ceil(Math.random() * size);
-  };
+
+   //Timer 
+   var updateTimeLeft = function (amount) {
+    timeLeft += amount;
+    $('#time').text(timeLeft);
+
+  }
   
-  var questionGenerator = function () {
-    var question = {};
-    var num1 = randomNumberGenerator(10);
-    var num2 = randomNumberGenerator(10);
-    
-    question.answer = num1 + num2;
-    question.equation = String(num1) + " + " + String(num2);
-    
-    return question;
+  //Score
+  var updateScore = function (amount) {
+    score += amount;
+    $('#score').text(score);
   };
 
-  // Display the question
+  var updateHighScore = function (score) {
+    if (score > highScore) {
+      highScore = score;
+      $('#highScore').text(highScore);
+    }
+  };
+
+  var startGame = function () {
+    if (!interval) {
+      
+      if (timeLeft === 0) {
+        updateTimeLeft(10);
+        updateHighScore(score);
+        updateScore(-score);
+      }
+
+      
+      interval = setInterval (function() {
+        updateTimeLeft(-1);
+        if (timeLeft <= 0) {
+          clearInterval(interval);
+          interval = undefined;
+        }
+      }, 1000);
+    }
+  }
+
+    // Generate a random number between 1 and 100
+    var randomNumberGenerator = function (size) {
+      return Math.ceil(Math.random() * size);
+    };
+    
+    var questionGenerator = function () {
+      var question = {};
+      var num1 = randomNumberGenerator(10);
+      var num2 = randomNumberGenerator(10);
+      
+      question.answer = num1 + num2;
+      question.equation = String(num1) + " + " + String(num2);
+      
+      return question;
+    };
+
+      // Display the question
   var renderNewQuestion = function () {
     
     currentQuestion = questionGenerator();
@@ -31,8 +73,6 @@ document.addEventListener('DOMContentLoaded', function() {
     //$('#question').text(currentQuestion.equation);
   };
   
-
-
   //Display the answer in the console
   var checkAnswer = function (userInput, answer) {
     if (userInput === answer); {
@@ -43,46 +83,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  $('#answer').on('keyup', function(event) {
+  $('#answer').on('change', function() {
     startGame();
     checkAnswer(Number($(this).val()), currentQuestion.answer);
   });
 
-  //Timer 
-  var updateTimeLeft = function () {
-    timeLeft--;
-    $('#time').text(timeLeft);
-  }
+ 
 
-  var startGame = function () {
-    if (!interval) {
-
-      if (timeLeft === 0) {
-        updateTimeLeft(10);
-      }
-      interval = setInterval (function() {
-        updateTimeLeft(-1);
-        if (timeLeft === 0) {
-          clearInterval(interval);
-          interval = undefined;
-        }
-      }, 1000);
-    }
-  }
-
-
-  //Score
-  var updateScore = function (amount) {
-    score += amount;
-    $('#score').text(score);
-  };
-  
   renderNewQuestion();
-
-
-
-
-
 
 
 
